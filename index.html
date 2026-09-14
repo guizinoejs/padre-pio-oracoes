@@ -112,6 +112,7 @@
             padding: 32px;
             margin-bottom: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
         }
 
         .prayer-number {
@@ -151,6 +152,35 @@
             display: block;
             margin-top: 15px;
             font-size: 1.1rem;
+        }
+
+        .audio-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: #070a12;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--gold-glow);
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .audio-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+        }
+
+        .audio-btn.playing {
+            background: linear-gradient(135deg, #ff6b6b, #cc0000);
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
         }
 
         .cta-box {
@@ -219,6 +249,7 @@
                     <p><em>Pai Nosso, Ave Maria, Glória ao Pai.</em><br>Sacratíssimo Coração de Jesus, confio e espero em Vós!</p>
                 </div>
                 <span class="amen">Amém.</span>
+                <button class="audio-btn" onclick="toggleAudio(this, 1)">🔊 Ouvir Oração</button>
             </article>
 
             <article class="prayer-card">
@@ -227,6 +258,7 @@
                 <div class="prayer-text">
                     <p>Ó Santo Padre Pio, que presenciastes milagres incontáveis de provisão, olhai para a minha vida material. Pedimos vossa intercessão para que nunca falte o alimento na nossa mesa nem o sustento digno em nossa casa. Afastai do nosso lar a escassez e que a Providência Divina chegue com bênçãos de fartura e paz. Amém.</p>
                 </div>
+                <button class="audio-btn" onclick="toggleAudio(this, 2)">🔊 Ouvir Oração</button>
             </article>
 
             <article class="prayer-card">
@@ -235,6 +267,7 @@
                 <div class="prayer-text">
                     <p>São Pio de Pietrelcina, colocai vossas mãos abençoadas sobre a minha vida financeira. Desfazei os nós que impedem o meu crescimento, abri as portas do trabalho e dos negócios prósperos, e dai-me sabedoria para gerir todas as graças recebidas. Amém.</p>
                 </div>
+                <button class="audio-btn" onclick="toggleAudio(this, 3)">🔊 Ouvir Oração</button>
             </article>
 
             <div class="cta-box">
@@ -250,6 +283,69 @@
             <p>© Orações de São Padre Pio • Que a Divina Providência abençoe o seu lar.</p>
         </footer>
     </div>
+
+    <script>
+        let currentAudio = null;
+        let currentButton = null;
+
+        function toggleAudio(button, prayerNumber) {
+            // Se há áudio tocando, para
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                if (currentButton) {
+                    currentButton.classList.remove('playing');
+                    currentButton.textContent = '🔊 Ouvir Oração';
+                }
+            }
+
+            // Se clicou no mesmo botão, apenas para
+            if (currentButton === button && currentAudio) {
+                currentAudio = null;
+                currentButton = null;
+                return;
+            }
+
+            // Define o texto da oração baseado no número
+            let prayerText = '';
+            if (prayerNumber === 1) {
+                prayerText = `Novena Irresistível ao Sagrado Coração de Jesus. Ó meu Jesus, que dissestes: Pedis e sereis atendidos, buscai e achareis, batei e abrir-se-á para vós, eis que eu bato, busco e peço a graça da fartura, da prosperidade honesta e da superação de todas as dificuldades financeiras. Pai Nosso, Ave Maria, Glória ao Pai. Sacratíssimo Coração de Jesus, confio e espero em Vós! Ó meu Jesus, que dissestes: Seja o que for que pedirdes ao meu Pai em meu nome, Ele vo-lo concederá, eis que ao vosso Pai peço o suprimento abundante para a minha casa e trabalho. Pai Nosso, Ave Maria, Glória ao Pai. Sacratíssimo Coração de Jesus, confio e espero em Vós! Amém.`;
+            } else if (prayerNumber === 2) {
+                prayerText = `Oração pela Infalível Providência Divina no Lar. Ó Santo Padre Pio, que presenciastes milagres incontáveis de provisão, olhai para a minha vida material. Pedimos vossa intercessão para que nunca falte o alimento na nossa mesa nem o sustento digno em nossa casa. Afastai do nosso lar a escassez e que a Providência Divina chegue com bênçãos de fartura e paz. Amém.`;
+            } else if (prayerNumber === 3) {
+                prayerText = `Prece de Abertura de Caminhos e Trabalho. São Pio de Pietrelcina, colocai vossas mãos abençoadas sobre a minha vida financeira. Desfazei os nós que impedem o meu crescimento, abri as portas do trabalho e dos negócios prósperos, e dai-me sabedoria para gerir todas as graças recebidas. Amém.`;
+            }
+
+            // Cria nova síntese de fala
+            const utterance = new SpeechSynthesisUtterance(prayerText);
+            utterance.lang = 'pt-BR';
+            utterance.rate = 0.8; // Velocidade mais lenta
+            utterance.pitch = 0.9; // Tom mais profundo
+            utterance.volume = 1;
+
+            // Quando terminar, atualiza o botão
+            utterance.onend = function() {
+                button.classList.remove('playing');
+                button.textContent = '🔊 Ouvir Oração';
+                currentAudio = null;
+                currentButton = null;
+            };
+
+            // Inicia reprodução
+            currentAudio = utterance;
+            currentButton = button;
+            button.classList.add('playing');
+            button.textContent = '⏹️ Parar Áudio';
+            speechSynthesis.speak(utterance);
+        }
+
+        // Para áudio ao sair da página
+        window.addEventListener('beforeunload', function() {
+            if (currentAudio) {
+                speechSynthesis.cancel();
+            }
+        });
+    </script>
 
 </body>
 </html>
