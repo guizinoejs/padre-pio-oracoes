@@ -287,23 +287,22 @@
     <script>
         let currentAudio = null;
         let currentButton = null;
+        let isPlaying = false;
 
         function toggleAudio(button, prayerNumber) {
-            // Se há áudio tocando, para
+            // Se está tocando, para
+            if (isPlaying && currentButton === button) {
+                stopAudio();
+                return;
+            }
+
+            // Se há outro áudio tocando, para
             if (currentAudio) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
+                speechSynthesis.cancel();
                 if (currentButton) {
                     currentButton.classList.remove('playing');
                     currentButton.textContent = '🔊 Ouvir Oração';
                 }
-            }
-
-            // Se clicou no mesmo botão, apenas para
-            if (currentButton === button && currentAudio) {
-                currentAudio = null;
-                currentButton = null;
-                return;
             }
 
             // Define o texto da oração baseado no número
@@ -316,11 +315,11 @@
                 prayerText = `Prece de Abertura de Caminhos e Trabalho. São Pio de Pietrelcina, colocai vossas mãos abençoadas sobre a minha vida financeira. Desfazei os nós que impedem o meu crescimento, abri as portas do trabalho e dos negócios prósperos, e dai-me sabedoria para gerir todas as graças recebidas. Amém.`;
             }
 
-            // Cria nova síntese de fala
+            // Cria nova síntese de fala com voz de idoso
             const utterance = new SpeechSynthesisUtterance(prayerText);
             utterance.lang = 'pt-BR';
-            utterance.rate = 0.8; // Velocidade mais lenta
-            utterance.pitch = 0.9; // Tom mais profundo
+            utterance.rate = 0.75; // Mais lento
+            utterance.pitch = 0.75; // Tom mais grave (voz de idoso)
             utterance.volume = 1;
 
             // Quando terminar, atualiza o botão
@@ -329,21 +328,33 @@
                 button.textContent = '🔊 Ouvir Oração';
                 currentAudio = null;
                 currentButton = null;
+                isPlaying = false;
             };
 
             // Inicia reprodução
             currentAudio = utterance;
             currentButton = button;
+            isPlaying = true;
             button.classList.add('playing');
             button.textContent = '⏹️ Parar Áudio';
             speechSynthesis.speak(utterance);
         }
 
-        // Para áudio ao sair da página
-        window.addEventListener('beforeunload', function() {
+        function stopAudio() {
             if (currentAudio) {
                 speechSynthesis.cancel();
+                currentAudio = null;
             }
+            if (currentButton) {
+                currentButton.classList.remove('playing');
+                currentButton.textContent = '🔊 Ouvir Oração';
+            }
+            isPlaying = false;
+        }
+
+        // Para áudio ao sair da página
+        window.addEventListener('beforeunload', function() {
+            stopAudio();
         });
     </script>
 
