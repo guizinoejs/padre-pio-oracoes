@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como Orar - São Padre Pio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #070a12;
+            --bg-card: rgba(18, 24, 38, 0.85);
+            --gold-primary: #d4af37;
+            --gold-light: #f9e79f;
+            --gold-dark: #aa820a;
+            --gold-glow: rgba(212, 175, 55, 0.35);
+            --text-light: #f4f6f9;
+            --text-muted: #a0aec0;
+            --border-gold: rgba(212, 175, 55, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 85% 40%, rgba(46, 125, 50, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 15% 85%, rgba(170, 130, 10, 0.08) 0%, transparent 50%);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            line-height: 1.8;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header-banner {
+            text-align: center;
+            padding: 40px 25px;
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-gold);
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            margin-bottom: 35px;
+        }
+
+        .padre-pio-img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--gold-primary);
+            box-shadow: 0 0 25px var(--gold-glow);
+            margin: 0 auto 20px auto;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.3rem;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--gold-light);
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold-primary);
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .step-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-gold);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: #070a12;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 45px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .step-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--gold-light);
+            margin-bottom: 12px;
+        }
+
+        .step-content {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            color: #edf2f7;
+            line-height: 1.9;
+        }
+
+        .step-content p {
+            margin-bottom: 10px;
+        }
+
+        .padre-section {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-gold);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        .padre-img-large {
+            width: 200px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid var(--gold-primary);
+            box-shadow: 0 0 30px var(--gold-glow);
+            margin: 0 auto 20px auto;
+            display: block;
+        }
+
+        .padre-bio {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            color: #edf2f7;
+            text-align: justify;
+            line-height: 1.9;
+        }
+
+        .padre-bio p {
+            margin-bottom: 15px;
+        }
+
+        .tips-box {
+            background: rgba(212, 175, 55, 0.08);
+            border-left: 4px solid var(--gold-primary);
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 0 16px 16px 0;
+        }
+
+        .tips-box strong {
+            color: var(--gold-primary);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .nav-btn {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: #070a12;
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            box-shadow: 0 0 20px var(--gold-glow);
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 0 10px 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header-banner">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Padre_Pio_1960.jpg/600px-Padre_Pio_1960.jpg" alt="São Padre Pio" class="padre-pio-img">
+            <h1>Como Orar</h1>
+            <p class="subtitle">Passo a Passo para Alcançar Graças com São Padre Pio</p>
+        </header>
+
+        <main>
+            <h2>📿 Guia Espiritual</h2>
+
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-title">Preparação do Coração e Ambiente</div>
+                <div class="step-content">
+                    <p>Procure um local tranquilo e sagrado para orar. Pode ser sua sala, quarto ou até uma chiesa. Sente-se confortavelmente e feche os olhos. Respire profundamente e deixe seus pensamentos mundanos de lado. Limpe seu coração de rancores, inveja e medo. Padre Pio ensinava que a oração sincera exige um coração puro e disponível.</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-title">Invoque a Proteção do Sagrado Coração</div>
+                <div class="step-content">
+                    <p>Comece fazendo o sinal da cruz e invocando a proteção de Jesus. Diga: <strong>"Em nome do Pai, do Filho e do Espírito Santo, Amém."</strong> Depois convide a presença do Sagrado Coração de Jesus em sua oração. Visualize a luz dourada envolvendo você e sua família.</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-title">Reze com Fé e Confiança</div>
+                <div class="step-content">
+                    <p>Leia a oração escolhida com atenção e sentimento. Não apenas recite as palavras, mas sinta cada uma delas em seu coração. Padre Pio dizia que a fé é a chave. Acredite que Deus já concedeu sua graça antes mesmo de você pedir. Reze com confiança absoluta na Divina Providência.</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <div class="step-title">Repita a Novena por 9 Dias</div>
+                <div class="step-content">
+                    <p>As novenas são mais poderosas quando rezadas durante 9 dias consecutivos. Escolha um horário fixo todos os dias (preferencialmente de manhã ou ao entardecer). Mantenha a disciplina e a constância. A repetição cria uma vibração espiritual poderosa que atrai as graças divinas.</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">5</div>
+                <div class="step-title">Termine com Gratidão</div>
+                <div class="step-content">
+                    <p>Ao final da oração, agradeci a Deus pela graça já concedida. Não termine rezando apenas com pedidos, mas com gratidão genuína. Padre Pio ensinava que a gratidão abre as portas para ainda mais bênçãos. Feche com o sinal da cruz e mantenha a fé que tudo virá no tempo certo.</p>
+                </div>
+            </div>
+
+            <div class="tips-box">
+                <strong>💡 Dica Importante:</strong> Padre Pio recomendava rezar também o Rosário diariamente. O Rosário amplifica o poder de qualquer intenção espiritual. Combine as novenas com o Rosário para resultados ainda mais poderosos.
+            </div>
+
+            <h2>✝️ Conhecendo Padre Pio</h2>
+
+            <div class="padre-section">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Padre_Pio_1960.jpg/600px-Padre_Pio_1960.jpg" alt="São Padre Pio" class="padre-img-large">
+                <div class="padre-bio">
+                    <p><strong>São Pio de Pietrelcina (1887-1968)</strong> foi um frade capuchinho italiano, canonizado em 16 de junho de 2002. Ele é conhecido mundialmente por seus milagres, suas estigmas (marcas das feridas de Cristo) e sua profunda devoção ao Sagrado Coração de Jesus.</p>
+
+                    <p>Padre Pio passou toda a sua vida intercedendo pelas almas necessitadas. Milhares de pessoas relataram milagres de cura, prosperidade e intervenção divina através de sua intercessão. Ele tinha um dom especial para compreender as necessidades materiais e espirituais dos fiéis, frequentemente ajudando pessoas em situações de pobreza extrema.</p>
+
+                    <p>Sua frase mais famosa é: <strong>"Reze, espere e não se preocupe. A preocupação é inútil. Deus é misericordioso e ouvirá a sua oração."</strong> Padre Pio ensinava que a verdadeira riqueza vem da fé inabalável em Deus e que Ele nunca abandona aquele que o busca com sinceridade.</p>
+
+                    <p>Muitos devotos atribuem a Padre Pio milagres de provisão, abertura de caminhos no trabalho, cura de doenças e restauração de famílias. Sua intercessão é particularmente poderosa para causas relacionadas a dificuldades financeiras e necessidades materiais.</p>
+                </div>
+            </div>
+
+            <div class="tips-box">
+                <strong>🙏 Oração de Invocação a Padre Pio:</strong> "São Pio de Pietrelcina, que conhecestes a escassez e a necessidade, que presenciastes inúmeros milagres de provisão divina, vinde em meu auxílio. Intercedei junto ao Sagrado Coração de Jesus por minha causa. Abençoai minha vida, meu trabalho e minha família com as graças de fartura e paz. Amém."
+            </div>
+
+            <div class="navigation">
+                <a href="index.html" class="nav-btn">← Voltar às Orações</a>
+                <a href="index.html" class="nav-btn">Início 🏠</a>
+            </div>
+        </main>
+
+        <footer>
+            <p>© Como Orar com São Padre Pio • Que a Divina Providência abençoe sua jornada espiritual.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
