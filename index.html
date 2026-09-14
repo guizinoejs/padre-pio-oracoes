@@ -228,30 +228,7 @@
 
     <div class="container">
         <header class="header-banner">
-            <svg class="padre-pio-img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <!-- Rosto -->
-                <circle cx="50" cy="45" r="35" fill="#d4a574"/>
-                
-                <!-- Cabelo -->
-                <path d="M 15 45 Q 15 15 50 15 Q 85 15 85 45" fill="#3d2817"/>
-                
-                <!-- Olhos -->
-                <circle cx="38" cy="40" r="3" fill="#000"/>
-                <circle cx="62" cy="40" r="3" fill="#000"/>
-                
-                <!-- Nariz -->
-                <path d="M 50 40 L 50 52" stroke="#8b6f47" stroke-width="1.5"/>
-                
-                <!-- Boca -->
-                <path d="M 42 58 Q 50 62 58 58" stroke="#8b6f47" stroke-width="1.5" fill="none"/>
-                
-                <!-- Barba -->
-                <path d="M 25 55 Q 50 75 75 55" fill="#5a4a34" opacity="0.7"/>
-                
-                <!-- Halo/Auréola (símbolo espiritual) -->
-                <circle cx="50" cy="45" r="42" fill="none" stroke="#d4af37" stroke-width="2" opacity="0.6"/>
-                <circle cx="50" cy="45" r="44" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.3"/>
-            </svg>
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAGQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlbaWmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//Z" alt="São Padre Pio" class="padre-pio-img">
             <h1>São Padre Pio</h1>
             <p class="subtitle">Orações de Prosperidade, Providência e Fartura no Lar</p>
         </header>
@@ -314,13 +291,11 @@
         let isPlaying = false;
 
         function toggleAudio(button, prayerNumber) {
-            // Se está tocando, para
             if (isPlaying && currentButton === button) {
                 stopAudio();
                 return;
             }
 
-            // Se há outro áudio tocando, para
             if (currentAudio) {
                 speechSynthesis.cancel();
                 if (currentButton) {
@@ -329,7 +304,6 @@
                 }
             }
 
-            // Define o texto da oração baseado no número
             let prayerText = '';
             if (prayerNumber === 1) {
                 prayerText = `Novena Irresistível ao Sagrado Coração de Jesus. Ó meu Jesus, que dissestes: Pedis e sereis atendidos, buscai e achareis, batei e abrir-se-á para vós, eis que eu bato, busco e peço a graça da fartura, da prosperidade honesta e da superação de todas as dificuldades financeiras. Pai Nosso, Ave Maria, Glória ao Pai. Sacratíssimo Coração de Jesus, confio e espero em Vós! Ó meu Jesus, que dissestes: Seja o que for que pedirdes ao meu Pai em meu nome, Ele vo-lo concederá, eis que ao vosso Pai peço o suprimento abundante para a minha casa e trabalho. Pai Nosso, Ave Maria, Glória ao Pai. Sacratíssimo Coração de Jesus, confio e espero em Vós! Amém.`;
@@ -339,7 +313,6 @@
                 prayerText = `Prece de Abertura de Caminhos e Trabalho. São Pio de Pietrelcina, colocai vossas mãos abençoadas sobre a minha vida financeira. Desfazei os nós que impedem o meu crescimento, abri as portas do trabalho e dos negócios prósperos, e dai-me sabedoria para gerir todas as graças recebidas. Amém.`;
             }
 
-            // Cria nova síntese de fala com voz de homem velho
             const utterance = new SpeechSynthesisUtterance(prayerText);
             utterance.lang = 'pt-BR';
             utterance.rate = 0.75;
