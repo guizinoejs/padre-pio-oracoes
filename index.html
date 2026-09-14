@@ -64,6 +64,7 @@
             box-shadow: 0 0 25px var(--gold-glow);
             margin: 0 auto 20px auto;
             display: block;
+            background-color: #333;
         }
 
         h1 {
@@ -227,7 +228,30 @@
 
     <div class="container">
         <header class="header-banner">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Padre_Pio_1960.jpg/600px-Padre_Pio_1960.jpg" alt="São Padre Pio" class="padre-pio-img">
+            <svg class="padre-pio-img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Rosto -->
+                <circle cx="50" cy="45" r="35" fill="#d4a574"/>
+                
+                <!-- Cabelo -->
+                <path d="M 15 45 Q 15 15 50 15 Q 85 15 85 45" fill="#3d2817"/>
+                
+                <!-- Olhos -->
+                <circle cx="38" cy="40" r="3" fill="#000"/>
+                <circle cx="62" cy="40" r="3" fill="#000"/>
+                
+                <!-- Nariz -->
+                <path d="M 50 40 L 50 52" stroke="#8b6f47" stroke-width="1.5"/>
+                
+                <!-- Boca -->
+                <path d="M 42 58 Q 50 62 58 58" stroke="#8b6f47" stroke-width="1.5" fill="none"/>
+                
+                <!-- Barba -->
+                <path d="M 25 55 Q 50 75 75 55" fill="#5a4a34" opacity="0.7"/>
+                
+                <!-- Halo/Auréola (símbolo espiritual) -->
+                <circle cx="50" cy="45" r="42" fill="none" stroke="#d4af37" stroke-width="2" opacity="0.6"/>
+                <circle cx="50" cy="45" r="44" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.3"/>
+            </svg>
             <h1>São Padre Pio</h1>
             <p class="subtitle">Orações de Prosperidade, Providência e Fartura no Lar</p>
         </header>
@@ -315,14 +339,19 @@
                 prayerText = `Prece de Abertura de Caminhos e Trabalho. São Pio de Pietrelcina, colocai vossas mãos abençoadas sobre a minha vida financeira. Desfazei os nós que impedem o meu crescimento, abri as portas do trabalho e dos negócios prósperos, e dai-me sabedoria para gerir todas as graças recebidas. Amém.`;
             }
 
-            // Cria nova síntese de fala com voz de idoso
+            // Cria nova síntese de fala com voz de homem velho
             const utterance = new SpeechSynthesisUtterance(prayerText);
             utterance.lang = 'pt-BR';
-            utterance.rate = 0.75; // Mais lento
-            utterance.pitch = 0.75; // Tom mais grave (voz de idoso)
+            utterance.rate = 0.75;
+            utterance.pitch = 0.6;
             utterance.volume = 1;
 
-            // Quando terminar, atualiza o botão
+            const voices = speechSynthesis.getVoices();
+            const maleVoice = voices.find(voice => voice.name.includes('Male') || voice.name.includes('male') || voice.name.includes('Português'));
+            if (maleVoice) {
+                utterance.voice = maleVoice;
+            }
+
             utterance.onend = function() {
                 button.classList.remove('playing');
                 button.textContent = '🔊 Ouvir Oração';
@@ -331,7 +360,6 @@
                 isPlaying = false;
             };
 
-            // Inicia reprodução
             currentAudio = utterance;
             currentButton = button;
             isPlaying = true;
@@ -352,7 +380,6 @@
             isPlaying = false;
         }
 
-        // Para áudio ao sair da página
         window.addEventListener('beforeunload', function() {
             stopAudio();
         });
