@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>São Padre Pio - Orações de Prosperidade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #070a12;
+            --bg-card: rgba(18, 24, 38, 0.85);
+            --gold-primary: #d4af37;
+            --gold-light: #f9e79f;
+            --gold-dark: #aa820a;
+            --gold-glow: rgba(212, 175, 55, 0.35);
+            --text-light: #f4f6f9;
+            --text-muted: #a0aec0;
+            --border-gold: rgba(212, 175, 55, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 85% 40%, rgba(46, 125, 50, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 15% 85%, rgba(170, 130, 10, 0.08) 0%, transparent 50%);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            line-height: 1.8;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header-banner {
+            text-align: center;
+            padding: 40px 25px;
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-gold);
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            margin-bottom: 35px;
+        }
+
+        .padre-pio-img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--gold-primary);
+            box-shadow: 0 0 25px var(--gold-glow);
+            margin: 0 auto 20px auto;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.3rem;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--gold-light);
+        }
+
+        .quote-box {
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 4px solid var(--gold-primary);
+            padding: 20px 25px;
+            margin: 30px 0;
+            border-radius: 0 16px 16px 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .quote-author {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-style: normal;
+            color: var(--gold-primary);
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .prayer-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-gold);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .prayer-number {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            color: var(--gold-primary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .prayer-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.45rem;
+            color: var(--gold-light);
+            margin-bottom: 18px;
+        }
+
+        .prayer-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            color: #edf2f7;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .prayer-text p {
+            margin-bottom: 14px;
+        }
+
+        .amen {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-primary);
+            font-weight: 700;
+            text-align: center;
+            display: block;
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+
+        .cta-box {
+            text-align: center;
+            margin: 40px 0 20px 0;
+            padding: 35px 20px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(18, 24, 38, 0.95));
+            border: 1px solid var(--gold-primary);
+            border-radius: 20px;
+        }
+
+        .btn-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: #070a12;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            box-shadow: 0 0 20px var(--gold-glow);
+            transition: all 0.3s ease;
+        }
+
+        .btn-arrow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 0 10px 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header-banner">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Padre_Pio_1960.jpg/600px-Padre_Pio_1960.jpg" alt="São Padre Pio" class="padre-pio-img">
+            <h1>São Padre Pio</h1>
+            <p class="subtitle">Orações de Prosperidade, Providência e Fartura no Lar</p>
+        </header>
+
+        <div class="quote-box">
+            "Reze, espere e não se preocupe. A preocupação é inútil. Deus é misericordioso e ouvirá a sua oração."
+            <span class="quote-author">— São Pio de Pietrelcina</span>
+        </div>
+
+        <main>
+            <article class="prayer-card">
+                <span class="prayer-number">Oração I</span>
+                <h2 class="prayer-title">Novena Irresistível ao Sagrado Coração de Jesus</h2>
+                <div class="prayer-text">
+                    <p><em>(Rezada diariamente por Padre Pio para intenções difíceis e causas financeiras)</em></p>
+                    <p><strong>I.</strong> Ó meu Jesus, que dissestes: <em>"Pedis e sereis atendidos, buscai e achareis, batei e abrir-se-á para vós!"</em>, eis que eu bato, busco e peço a graça da fartura, da prosperidade honesta e da superação de todas as dificuldades financeiras.</p>
+                    <p><em>Pai Nosso, Ave Maria, Glória ao Pai.</em><br>Sacratíssimo Coração de Jesus, confio e espero em Vós!</p>
+                    <p><strong>II.</strong> Ó meu Jesus, que dissestes: <em>"Seja o que for que pedirdes ao meu Pai em meu nome, Ele vo-lo concederá!"</em>, eis que ao vosso Pai peço o suprimento abundante para a minha casa e trabalho.</p>
+                    <p><em>Pai Nosso, Ave Maria, Glória ao Pai.</em><br>Sacratíssimo Coração de Jesus, confio e espero em Vós!</p>
+                </div>
+                <span class="amen">Amém.</span>
+            </article>
+
+            <article class="prayer-card">
+                <span class="prayer-number">Oração II</span>
+                <h2 class="prayer-title">Oração pela Infalível Providência Divina no Lar</h2>
+                <div class="prayer-text">
+                    <p>Ó Santo Padre Pio, que presenciastes milagres incontáveis de provisão, olhai para a minha vida material. Pedimos vossa intercessão para que nunca falte o alimento na nossa mesa nem o sustento digno em nossa casa. Afastai do nosso lar a escassez e que a Providência Divina chegue com bênçãos de fartura e paz. Amém.</p>
+                </div>
+            </article>
+
+            <article class="prayer-card">
+                <span class="prayer-number">Oração III</span>
+                <h2 class="prayer-title">Prece de Abertura de Caminhos e Trabalho</h2>
+                <div class="prayer-text">
+                    <p>São Pio de Pietrelcina, colocai vossas mãos abençoadas sobre a minha vida financeira. Desfazei os nós que impedem o meu crescimento, abri as portas do trabalho e dos negócios prósperos, e dai-me sabedoria para gerir todas as graças recebidas. Amém.</p>
+                </div>
+            </article>
+
+            <div class="cta-box">
+                <h3 style="color: var(--gold-light); font-family: 'Cinzel', serif; margin-bottom: 12px;">Quer aprender como rezar essas preces?</h3>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">Veja os passos espirituais ensinados por Padre Pio para alcançar graças e fartura.</p>
+                <a href="como_orar.html" class="btn-arrow">
+                    Como Orar Passo a Passo &rarr;
+                </a>
+            </div>
+        </main>
+
+        <footer>
+            <p>© Orações de São Padre Pio • Que a Divina Providência abençoe o seu lar.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
